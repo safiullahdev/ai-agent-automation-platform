@@ -37,6 +37,21 @@ The platform is designed to support future integrations with:
 - Retrieval-Augmented Generation (RAG)
 - Azure OpenAI Service
 
+## Development Environment
+
+Recommended tools:
+
+- Node.js 20+
+- VS Code
+- Git
+- ESLint
+- Prettier
+
+Install dependencies:
+
+```bash
+npm install
+
 ## Technology Stack
 
 - TypeScript
