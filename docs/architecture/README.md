@@ -15,3 +15,9 @@ This directory contains the architectural documentation for the AI Agent Automat
 ## Purpose
 
 The documentation in this directory provides a high-level overview of the platform architecture and serves as a reference for developers when designing, implementing, and maintaining AI agents and supporting services.
+
+## Documents
+
+- Project Structure
+- Architecture Overview
+- Architecture Diagram
