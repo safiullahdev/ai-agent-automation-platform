@@ -2,6 +2,7 @@
   "name": "ai-agent-automation-platform",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "description": "Modular AI agent automation platform built with TypeScript.",
   "scripts": {
     "build": "tsc",
@@ -21,6 +22,7 @@
     "prettier": "^3.0.0",
     "tsx": "^4.0.0",
     "typescript": "^5.0.0",
+    "typescript-eslint": "^8.64.0",
     "vitest": "^3.0.0"
   }
 }
