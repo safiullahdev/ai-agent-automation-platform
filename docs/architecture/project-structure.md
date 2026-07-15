@@ -1,18 +1,21 @@
 # Project Structure
 
+The AI Agent Automation Platform is organized into modular components to support scalability, maintainability, and future AI agent integrations.
+
 ```text
 ai-agent-automation-platform/
-├── .github/workflows/
-├── agents/
+├── .github/
+│   └── workflows/             # GitHub Actions CI/CD pipelines
+├── agents/                    # Specialized AI agents
 │   ├── coordinator-agent/
 │   ├── manual-test-agent/
 │   ├── code-review-agent/
 │   └── documentation-agent/
-├── api/
-├── workflows/
-├── prompts/
-├── shared/
-├── config/
+├── api/                       # REST API endpoints
+├── workflows/                 # Multi-agent orchestration
+├── prompts/                   # Prompt templates
+├── shared/                    # Shared utilities and common code
+├── config/                    # Configuration and environment loading
 ├── docs/
 │   ├── architecture/
 │   ├── diagrams/
@@ -21,10 +24,10 @@ ai-agent-automation-platform/
 │   ├── unit/
 │   ├── integration/
 │   └── e2e/
-├── scripts/
-├── examples/
-├── playground/
-├── src/
+├── scripts/                   # Development and automation scripts
+├── examples/                  # Sample requests and responses
+├── playground/                # Experimental prototypes
+├── src/                       # Application entry point
 ├── package.json
 ├── tsconfig.json
 ├── .gitignore
@@ -34,8 +37,9 @@ ai-agent-automation-platform/
 
 ## Design Principles
 
-1. Keep each agent independently testable.
-2. Separate orchestration from agent-specific logic.
-3. Keep prompts version controlled.
-4. Centralize shared configuration and utilities.
-5. Support future Microsoft and Azure integrations without major restructuring.
+- Keep each AI agent modular and independently testable.
+- Separate orchestration logic from individual agent implementations.
+- Store prompt templates under version control.
+- Centralize shared utilities and configuration.
+- Support CI/CD through GitHub Actions.
+- Design the platform to accommodate future integrations with Microsoft technologies such as Semantic Kernel, Azure AI Foundry, Microsoft Graph, and Copilot Studio.
