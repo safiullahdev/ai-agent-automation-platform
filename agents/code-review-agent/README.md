@@ -1,13 +1,13 @@
-# Code Review Agent
+# Coordinator Agent
 
 ## Purpose
 
-Reviews code changes and produces structured findings and recommendations.
+Receives user requests, determines the request type, and routes the request to the appropriate specialized agent.
 
 ## Planned Contents
 
 - Agent configuration
-- Prompt templates
-- Input/output types
-- Service implementation
+- Request routing logic
+- Request/response models
+- Integration with specialized agents
 - Unit tests
