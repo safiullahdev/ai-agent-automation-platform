@@ -2,12 +2,13 @@
 
 ## Purpose
 
-Generates positive, negative, boundary, and edge-case manual test scenarios from requirements.
+Generates structured manual test cases from feature descriptions and user stories.
 
 ## Planned Contents
 
 - Agent configuration
-- Prompt templates
-- Input/output types
-- Service implementation
+- Request and response models
+- Test-case generation logic
+- Input validation
+- Coordinator Agent integration
 - Unit tests
