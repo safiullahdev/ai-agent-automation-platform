@@ -6,7 +6,15 @@ import {
 
 export class ManualTestAgent {
   generate(request: ManualTestRequest): ManualTestResponse {
-    const feature = request.featureDescription;
+    const feature = request.featureDescription.trim();
+
+    if (!feature) {
+    return {
+        featureDescription: "",
+        testCases: [],
+        message: "Please provide a feature description."
+    };
+    }
 
     const testCases: ManualTestCase[] = [
       {

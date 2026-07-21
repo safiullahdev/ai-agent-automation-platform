@@ -22,4 +22,5 @@ export interface ManualTestCase {
 export interface ManualTestResponse {
   featureDescription: string;
   testCases: ManualTestCase[];
+  message?: string;
 }
