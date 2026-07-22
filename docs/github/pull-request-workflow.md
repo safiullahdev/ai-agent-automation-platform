@@ -73,3 +73,5 @@ feature/AIAP-32-create-pr-workflow-documentation
 ```
 AIAP-32 Create pull request workflow documentation
 ```
+
+## Pull request workflow verified.
