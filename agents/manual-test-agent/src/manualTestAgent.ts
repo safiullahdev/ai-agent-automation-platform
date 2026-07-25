@@ -4,16 +4,21 @@ import {
   ManualTestResponse
 } from "./manualTestTypes.js";
 
+import { IAgentService } from "../../../src/agents/services/agentFramework/IAgentService.js";
+
 export class ManualTestAgent {
+
+  constructor(private readonly aiService?: IAgentService) {}
+
   generate(request: ManualTestRequest): ManualTestResponse {
     const feature = request.featureDescription.trim();
 
     if (!feature) {
-    return {
+      return {
         featureDescription: "",
         testCases: [],
         message: "Please provide a feature description."
-    };
+      };
     }
 
     const testCases: ManualTestCase[] = [
@@ -81,4 +86,20 @@ export class ManualTestAgent {
       testCases
     };
   }
+
+async generateWithAI(request: ManualTestRequest): Promise<string> {
+  const feature = request.featureDescription.trim();
+
+  console.log("ManualTestAgent received:", feature);
+
+  const prompt = `Generate manual test cases for: ${feature}`;
+
+  console.log("ManualTestAgent sending to Semantic Kernel:", prompt);
+
+  const response = await this.aiService!.processRequest(prompt);
+
+  console.log("ManualTestAgent received back:", response);
+
+  return response;
+}
 }
