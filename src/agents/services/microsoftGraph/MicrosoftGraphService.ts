@@ -3,10 +3,15 @@ import {
   GraphCalendarEvent,
   GraphUserProfile,
 } from "./MicrosoftGraphTypes.js";
+import { MicrosoftGraphConfig } from "./MicrosoftGraphConfig.js";
 
 export class MicrosoftGraphService implements IMicrosoftGraphService {
+  constructor(private readonly config: MicrosoftGraphConfig) {}
+
   async initialize(): Promise<void> {
-    console.log("Microsoft Graph service initialized.");
+    console.log(
+      `Microsoft Graph service initialized for tenant: ${this.config.tenantId}`
+    );
   }
 
   async getUserProfile(): Promise<GraphUserProfile> {
