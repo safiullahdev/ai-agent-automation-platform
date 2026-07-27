@@ -15,13 +15,21 @@ This project follows a modular architecture that allows agents to be developed, 
 - GitHub Actions CI workflow
 - Environment configuration
 - Documentation framework
-- Unit testing structure
-- Agent scaffolding
+- Unit and integration testing
+- Coordinator Agent request routing
+- Manual Test Generation Agent
+- Microsoft Agent Framework service foundation
+- Semantic Kernel service integration
 
-## Planned AI Agents
+## AI Agents
+
+### Implemented
 
 - Coordinator Agent
 - Manual Test Generation Agent
+
+### Planned
+
 - Code Review Agent
 - Documentation Agent
 
@@ -29,7 +37,7 @@ This project follows a modular architecture that allows agents to be developed, 
 
 The platform is designed to support future integrations with:
 
-- Microsoft Semantic Kernel
+- Azure OpenAI integration through Semantic Kernel
 - Azure AI Foundry
 - Microsoft Graph
 - Microsoft Copilot Studio
@@ -60,6 +68,16 @@ npm install
 - Git
 - REST APIs
 - AI-assisted development tools
+
+## Current Architecture
+
+The platform currently includes:
+
+- Coordinator Agent for request routing.
+- Manual Test Generation Agent for creating manual test cases.
+- Microsoft Agent Framework service foundation.
+- Semantic Kernel service implementing the shared `IAgentService` interface.
+- Dependency injection to allow AI services to be swapped without changing agent logic.
 
 ## Getting Started
 
