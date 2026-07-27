@@ -1,5 +1,33 @@
 import { describe, expect, it } from "vitest";
 import { ManualTestAgent } from "../src/manualTestAgent.js";
+import { SemanticKernelService } from "../../../src/agents/services/semanticKernel/SemanticKernelService.js";
+import { AgentFrameworkService } from "../../../src/agents/services/agentFramework/AgentFrameworkService.js";
+
+it("should send a test generation request to Semantic Kernel", async () => {
+  const semanticKernelService = new SemanticKernelService();
+  const agent = new ManualTestAgent(semanticKernelService);
+
+  const response = await agent.generateWithAI({
+    featureDescription: "user login"
+  });
+
+  expect(response).toBe(
+    "Semantic Kernel processed: Generate manual test cases for: user login"
+  );
+});
+
+it("should send a request through Agent Framework Service", async () => {
+  const agentFrameworkService = new AgentFrameworkService();
+  const agent = new ManualTestAgent(agentFrameworkService);
+
+  const response = await agent.generateWithAI({
+    featureDescription: "user login"
+  });
+
+  expect(response).toBe(
+    "Received request: Generate manual test cases for: user login"
+  );
+});
 
 describe("ManualTestAgent", () => {
   const agent = new ManualTestAgent();
