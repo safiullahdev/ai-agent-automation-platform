@@ -34,4 +34,30 @@ describe("CoordinatorAgent", () => {
 
     expect(response.selectedAgent).toBe("unknown");
   });
+
+  it("routes calendar requests to the Email Agent", () => {
+    const response = coordinator.route({
+      prompt: "Show my calendar",
+    });
+
+    expect(response.selectedAgent).toBe("email-agent");
+  });
+
+  it("routes email requests to the Email Agent", () => {
+    const response = coordinator.route({
+      prompt: "Read my emails",
+    });
+
+    expect(response.selectedAgent).toBe("email-agent");
+  });
+
+  it("routes profile requests to the Email Agent", () => {
+    const response = coordinator.route({
+      prompt: "Show my profile",
+    });
+
+    expect(response.selectedAgent).toBe("email-agent");
+  });
+
+  
 });

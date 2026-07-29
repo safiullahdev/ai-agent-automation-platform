@@ -32,6 +32,17 @@ export class CoordinatorAgent {
       };
     }
 
+    if (
+      prompt.includes("email") ||
+      prompt.includes("calendar") ||
+      prompt.includes("profile")
+    ) {
+      return {
+        selectedAgent: "email-agent",
+        message: "Request routed to the Email Agent.",
+      };
+    }
+
     return {
       selectedAgent: "unknown",
       message: "No matching agent was found.",

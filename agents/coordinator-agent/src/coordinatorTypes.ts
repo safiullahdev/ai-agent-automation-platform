@@ -2,6 +2,7 @@ export type AgentType =
   | "code-review"
   | "documentation"
   | "manual-test"
+  | "email-agent"
   | "unknown";
 
 export interface CoordinatorRequest {
