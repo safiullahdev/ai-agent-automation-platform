@@ -16,12 +16,23 @@ This project follows a modular architecture that allows agents to be developed, 
 - Environment configuration
 - Documentation framework
 - Unit testing structure
-- Agent scaffolding
+- Coordinator Agent
+- Manual Test Generation Agent
+- Email Agent
+- Microsoft Agent Framework integration
+- Microsoft Semantic Kernel integration
+- Microsoft Graph service foundation
 
 ## Planned AI Agents
 
+Implemented:
+
 - Coordinator Agent
 - Manual Test Generation Agent
+- Email Agent
+
+Planned:
+
 - Code Review Agent
 - Documentation Agent
 
