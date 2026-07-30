@@ -22,6 +22,7 @@ This project follows a modular architecture that allows agents to be developed, 
 - Microsoft Agent Framework integration
 - Microsoft Semantic Kernel integration
 - Microsoft Graph service foundation
+- Azure AI Foundry service foundation
 
 ## Planned AI Agents
 
@@ -38,15 +39,21 @@ Planned:
 
 ## Future Enhancements
 
-The platform is designed to support future integrations with:
+The platform is designed to support future AI capabilities and integrations, including:
 
-- Microsoft Semantic Kernel
-- Azure AI Foundry
-- Microsoft Graph
 - Microsoft Copilot Studio
 - GitHub Pull Request Automation
 - Retrieval-Augmented Generation (RAG)
 - Azure OpenAI Service
+
+## Microsoft AI Services
+
+Current service foundations:
+
+- Microsoft Agent Framework
+- Microsoft Semantic Kernel
+- Microsoft Graph
+- Azure AI Foundry
 
 ## Development Environment
 
@@ -62,6 +69,7 @@ Install dependencies:
 
 ```bash
 npm install
+```
 
 ## Technology Stack
 
