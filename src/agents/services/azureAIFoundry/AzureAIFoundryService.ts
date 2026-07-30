@@ -1,5 +1,11 @@
-export interface IAzureAIFoundryService {
-  initialize(): Promise<void>;
+import { IAzureAIFoundryService } from "./IAzureAIFoundryService.js";
 
-  processPrompt(prompt: string): Promise<string>;
+export class AzureAIFoundryService implements IAzureAIFoundryService {
+  async initialize(): Promise<void> {
+    console.log("Azure AI Foundry initialized.");
+  }
+
+  async processPrompt(prompt: string): Promise<string> {
+    return `Azure AI Foundry processed: ${prompt}`;
+  }
 }
