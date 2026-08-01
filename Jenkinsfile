@@ -6,9 +6,9 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Install Dependencies') {
             steps {
-                checkout scm
+                sh 'npm ci'
             }
         }
     }
