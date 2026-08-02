@@ -16,7 +16,11 @@ app.post("/test", (req, res) => {
     received: req.body,
   });
 });
-
+app.get("/health", (_req, res) => {
+  res.status(200).json({
+    status: "UP",
+  });
+});
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
