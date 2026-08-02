@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm run test-invalid'
+                sh 'npm run test'
             }
         }
     }
