@@ -24,6 +24,9 @@ This project follows a modular architecture that allows agents to be developed, 
 - Microsoft Semantic Kernel integration
 - Microsoft Graph service foundation
 - Azure AI Foundry service foundation
+- Express REST API
+- Health check endpoint
+- REST API routing
 
 ## Planned AI Agents
 
@@ -78,6 +81,7 @@ npm install
 
 - TypeScript
 - Node.js
+- Express
 - Jenkins
 - GitHub Actions
 - Git
@@ -144,6 +148,126 @@ cp .env.example .env
 For complete setup instructions, see:
 
 - [Local Development Setup](docs/setup/local-development.md)
+
+## REST API
+
+The AI Agent Automation Platform exposes a REST API for executing AI agents.
+
+### Start the API
+
+```bash
+npx tsx src/api/server.ts
+```
+
+The API runs on:
+
+```
+http://localhost:3000
+```
+
+---
+
+### Endpoints
+
+#### GET /
+
+Returns a welcome message.
+
+Example response:
+
+```text
+AI Agent Automation Platform API
+```
+
+---
+
+#### GET /health
+
+Returns the health status of the API.
+
+Example response:
+
+```json
+{
+  "status": "UP"
+}
+```
+
+---
+
+#### GET /api/agents
+
+Returns basic API information.
+
+Example response:
+
+```json
+{
+  "message": "Agent API"
+}
+```
+
+---
+
+#### POST /api/agents/execute
+
+Routes a prompt to the appropriate AI agent using the Coordinator Agent. The current implementation identifies the appropriate agent and returns the routing result.
+
+Example request:
+
+```json
+{
+  "prompt": "Generate manual test cases for login"
+}
+```
+
+Example response:
+
+```json
+{
+  "success": true,
+  "result": {
+    "selectedAgent": "manual-test",
+    "message": "Request routed to the Manual Test Agent."
+  }
+}
+```
+
+---
+
+### API Flow
+
+```
+Client
+   │
+HTTP Request
+   │
+Express Server
+   │
+Routes
+   │
+Controller
+   │
+Coordinator Agent
+   │
+Selected Agent
+```
+
+---
+
+### Testing
+
+The REST API can be verified using:
+
+- Vitest
+- curl
+- Postman Desktop
+
+Run all automated tests:
+
+```bash
+npm test
+```
 
 ## Documentation
 
