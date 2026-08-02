@@ -1,10 +1,12 @@
 import express from "express";
+import agentRoutes from "./routes/agentRoutes.js";
+
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-
+app.use("/api/agents", agentRoutes);
 app.get("/", (_req, res) => {
   res.send("AI Agent Automation Platform API");
 });
