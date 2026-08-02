@@ -13,6 +13,7 @@ This project follows a modular architecture that allows agents to be developed, 
 - Modular project structure
 - TypeScript development environment
 - GitHub Actions CI workflow
+- Jenkins CI pipeline
 - Environment configuration
 - Documentation framework
 - Unit testing structure
@@ -77,10 +78,42 @@ npm install
 
 - TypeScript
 - Node.js
+- Jenkins
 - GitHub Actions
 - Git
 - REST APIs
 - AI-assisted development tools
+
+## Jenkins CI Pipeline
+
+This project includes a Jenkins Declarative Pipeline for continuous integration.
+
+### Pipeline Stages
+
+1. Checkout – Clones the source code from GitHub.
+2. Install Dependencies – Runs `npm ci` to install project dependencies.
+3. Lint – Runs `npm run lint` to validate code quality using ESLint.
+4. Build – Runs `npm run build` to compile the TypeScript project.
+5. Test – Runs `npm test` to execute the Vitest test suite.
+
+### Running the Pipeline
+
+1. Open Jenkins.
+2. Select the `ai-agent-automation-platform` pipeline job.
+3. Click **Build Now**.
+4. View the Console Output to monitor each stage and verify the build result.
+
+A successful pipeline finishes with:
+
+```text
+Finished: SUCCESS
+```
+
+If any stage fails, Jenkins stops the pipeline and marks the build as:
+
+```text
+Finished: FAILURE
+```
 
 ## Getting Started
 
