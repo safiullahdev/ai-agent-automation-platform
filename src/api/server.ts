@@ -1,14 +1,25 @@
 import express from "express";
+import path from "path";
 import agentRoutes from "./routes/agentRoutes.js";
 
 const app = express();
 const PORT = 3000;
 
+const publicPath = path.join(
+  process.cwd(),
+  "agents",
+  "coordinator-agent",
+  "public"
+);
+
 app.use(express.json());
+
+app.use(express.static(publicPath));
+
 app.use("/api/agents", agentRoutes);
 
 app.get("/", (_req, res) => {
-  res.send("AI Agent Automation Platform API");
+  res.sendFile(path.join(publicPath, "index.html"));
 });
 
 app.get("/health", (_req, res) => {
