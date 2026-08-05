@@ -60,4 +60,31 @@ describe("API Server", () => {
       message: "Prompt is required",
     });
   });
+
+  it("should serve the web UI from the root route", async () => {
+    const response = await request(app).get("/");
+
+    expect(response.status).toBe(200);
+    expect(response.headers["content-type"]).toContain("text/html");
+    expect(response.text).toContain("AI Agent Automation Platform");
+    expect(response.text).toContain("Run Agent");
+  });
+
+  it("should serve the web UI JavaScript file", async () => {
+    const response = await request(app).get("/app.js");
+
+    expect(response.status).toBe(200);
+    expect(response.headers["content-type"]).toContain("javascript");
+    expect(response.text).toContain(
+      'document.getElementById("run-agent-button")'
+    );
+  });
+
+  it("should serve the web UI stylesheet", async () => {
+    const response = await request(app).get("/styles.css");
+
+    expect(response.status).toBe(200);
+    expect(response.headers["content-type"]).toContain("text/css");
+    expect(response.text).toContain("#response-output");
+  });
 });
