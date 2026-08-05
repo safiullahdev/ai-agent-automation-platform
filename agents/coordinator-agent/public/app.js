@@ -1,3 +1,4 @@
+/* global document, fetch, console */
 const agentSelect = document.getElementById("agent-select");
 const promptInput = document.getElementById("prompt-input");
 const runAgentButton = document.getElementById("run-agent-button");
