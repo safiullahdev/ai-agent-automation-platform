@@ -13,6 +13,10 @@ runAgentButton.addEventListener("click", async () => {
         return;
     }
 
+    runAgentButton.disabled = true;
+    runAgentButton.textContent = "Running...";
+    responseOutput.textContent = "Executing agent...";
+
     try {
         const response = await fetch("/api/agents/execute", {
             method: "POST",
@@ -26,7 +30,9 @@ runAgentButton.addEventListener("click", async () => {
         });
 
         if (!response.ok) {
-            throw new Error(`Request failed with status ${response.status}`);
+            throw new Error(
+                `Request failed with status ${response.status}`
+            );
         }
 
         const data = await response.json();
@@ -34,6 +40,11 @@ runAgentButton.addEventListener("click", async () => {
         responseOutput.textContent = JSON.stringify(data, null, 2);
     } catch (error) {
         console.error(error);
-        responseOutput.textContent = `Error: ${error.message}`;
+
+        responseOutput.textContent =
+            `Unable to execute the agent: ${error.message}`;
+    } finally {
+        runAgentButton.disabled = false;
+        runAgentButton.textContent = "Run Agent";
     }
 });
