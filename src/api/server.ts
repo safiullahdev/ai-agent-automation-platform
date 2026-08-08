@@ -3,7 +3,8 @@ import path from "path";
 import agentRoutes from "./routes/agentRoutes.js";
 
 const app = express();
-const PORT = 3000;
+
+const PORT = Number(process.env.PORT) || 3000;
 
 const publicPath = path.join(
   process.cwd(),
