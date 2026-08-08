@@ -23,8 +23,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm run test'
+                sh 'npm run test-invalid'
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t ai-agent-automation-platform:int .'
+        }
+}
     }
 }
