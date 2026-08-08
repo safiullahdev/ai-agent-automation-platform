@@ -30,12 +30,6 @@ runAgentButton.addEventListener("click", async () => {
             })
         });
 
-        if (!response.ok) {
-            throw new Error(
-                `Request failed with status ${response.status}`
-            );
-        }
-
         const data = await response.json();
 
         responseOutput.textContent = JSON.stringify(data, null, 2);

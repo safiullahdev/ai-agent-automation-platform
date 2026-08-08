@@ -21,33 +21,35 @@ describe("API Server", () => {
     });
   });
 
-  it("should route a manual test prompt", async () => {
-    const response = await request(app)
-      .post("/api/agents/execute")
-      .send({
-        prompt: "Generate manual test cases for login",
-      });
-
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual({
-      success: true,
-      result: {
-        selectedAgent: "manual-test",
-        message: "Request routed to the Manual Test Agent.",
-      },
+it("should route a manual test prompt through the coordinator", async () => {
+  const response = await request(app)
+    .post("/api/agents/execute")
+    .send({
+      agent: "coordinator",
+      prompt: "Generate manual test cases for login",
     });
-  });
 
-  it("should route a code review prompt", async () => {
-    const response = await request(app)
-      .post("/api/agents/execute")
-      .send({
-        prompt: "Review my code",
-      });
+  expect(response.status).toBe(200);
+  expect(response.body.requestedAgent).toBe("coordinator");
+  expect(response.body.executedAgent).toBe("manual-test");
+  expect(response.body.data.featureDescription).toBe(
+    "Generate manual test cases for login"
+  );
+  expect(response.body.data.testCases).toBeDefined();
+});
 
-    expect(response.status).toBe(200);
-    expect(response.body.result.selectedAgent).toBe("code-review");
-  });
+it("should route a code review prompt through the coordinator", async () => {
+  const response = await request(app)
+    .post("/api/agents/execute")
+    .send({
+      agent: "coordinator",
+      prompt: "Review my code",
+    });
+
+  expect(response.status).toBe(200);
+  expect(response.body.requestedAgent).toBe("coordinator");
+  expect(response.body.executedAgent).toBe("code-review");
+});
 
   it("should return 400 when prompt is missing", async () => {
     const response = await request(app)
