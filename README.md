@@ -27,16 +27,17 @@ This project follows a modular architecture that allows agents to be developed, 
 - Express REST API
 - Health check endpoint
 - REST API routing
+- Browser-based Web User Interface
 
 ## Planned AI Agents
 
-Implemented:
+### Implemented
 
 - Coordinator Agent
 - Manual Test Generation Agent
 - Email Agent
 
-Planned:
+### Planned
 
 - Code Review Agent
 - Documentation Agent
@@ -61,7 +62,7 @@ Current service foundations:
 
 ## Development Environment
 
-Recommended tools:
+### Recommended Tools
 
 - Node.js 20+
 - VS Code
@@ -74,8 +75,6 @@ Install dependencies:
 ```bash
 npm install
 ```
-
-
 
 ## Technology Stack
 
@@ -94,26 +93,26 @@ This project includes a Jenkins Declarative Pipeline for continuous integration.
 
 ### Pipeline Stages
 
-1. Checkout – Clones the source code from GitHub.
-2. Install Dependencies – Runs `npm ci` to install project dependencies.
-3. Lint – Runs `npm run lint` to validate code quality using ESLint.
-4. Build – Runs `npm run build` to compile the TypeScript project.
-5. Test – Runs `npm test` to execute the Vitest test suite.
+1. Checkout – Clone the source code from GitHub.
+2. Install Dependencies – Run `npm ci`.
+3. Lint – Run `npm run lint`.
+4. Build – Run `npm run build`.
+5. Test – Run `npm test`.
 
 ### Running the Pipeline
 
 1. Open Jenkins.
-2. Select the `ai-agent-automation-platform` pipeline job.
+2. Select the **ai-agent-automation-platform** pipeline.
 3. Click **Build Now**.
-4. View the Console Output to monitor each stage and verify the build result.
+4. Review the Console Output.
 
-A successful pipeline finishes with:
+A successful build finishes with:
 
 ```text
 Finished: SUCCESS
 ```
 
-If any stage fails, Jenkins stops the pipeline and marks the build as:
+A failed build finishes with:
 
 ```text
 Finished: FAILURE
@@ -121,25 +120,31 @@ Finished: FAILURE
 
 ## Getting Started
 
-Install project dependencies.
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Build the project.
+Build the project:
 
 ```bash
 npm run build
 ```
 
-Run unit tests.
+Run unit tests:
 
 ```bash
 npm test
 ```
 
-Create a local environment configuration.
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+Create a local environment configuration:
 
 ```bash
 cp .env.example .env
@@ -149,43 +154,43 @@ For complete setup instructions, see:
 
 - [Local Development Setup](docs/setup/local-development.md)
 
-## REST API
+---
+
+# REST API
 
 The AI Agent Automation Platform exposes a REST API for executing AI agents.
 
-### Start the API
+## Start the API
+
+Development:
 
 ```bash
-npx tsx src/api/server.ts
+npm run dev
 ```
 
-The API runs on:
+Production:
 
+```bash
+npm start
 ```
+
+The API runs at:
+
+```text
 http://localhost:3000
 ```
 
----
+## Endpoints
 
-### Endpoints
+### GET /
 
-#### GET /
+Serves the browser-based Web UI.
 
-Returns a welcome message.
+### GET /health
 
-Example response:
+Returns the API health status.
 
-```text
-AI Agent Automation Platform API
-```
-
----
-
-#### GET /health
-
-Returns the health status of the API.
-
-Example response:
+Example:
 
 ```json
 {
@@ -193,13 +198,11 @@ Example response:
 }
 ```
 
----
+### GET /api/agents
 
-#### GET /api/agents
+Returns API information.
 
-Returns basic API information.
-
-Example response:
+Example:
 
 ```json
 {
@@ -207,11 +210,9 @@ Example response:
 }
 ```
 
----
+### POST /api/agents/execute
 
-#### POST /api/agents/execute
-
-Routes a prompt to the appropriate AI agent using the Coordinator Agent. The current implementation identifies the appropriate agent and returns the routing result.
+Routes a prompt to the appropriate AI agent using the Coordinator Agent.
 
 Example request:
 
@@ -233,16 +234,16 @@ Example response:
 }
 ```
 
----
+## REST API Flow
 
-### API Flow
-
-```
+```text
 Client
    │
 HTTP Request
    │
 Express Server
+   │
+Middleware
    │
 Routes
    │
@@ -250,16 +251,96 @@ Controller
    │
 Coordinator Agent
    │
-Selected Agent
+Routing Response
 ```
 
 ---
 
-### Testing
+# Web User Interface
 
-The REST API can be verified using:
+The AI Agent Automation Platform includes a browser-based interface for interacting with AI agents.
+
+## Features
+
+- Select an AI agent
+- Enter a prompt
+- Execute requests through the REST API
+- View JSON responses
+- Loading indicator
+- Error handling
+
+## Running the Web UI
+
+Start the application:
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+npm start
+```
+
+Open your browser:
+
+```text
+http://localhost:3000
+```
+
+## Example
+
+### Selected Agent
+
+```text
+Coordinator Agent
+```
+
+### Prompt
+
+```text
+Generate manual test cases for login
+```
+
+### Example Response
+
+```json
+{
+  "success": true,
+  "result": {
+    "selectedAgent": "manual-test",
+    "message": "Request routed to the Manual Test Agent."
+  }
+}
+```
+
+## Web UI Flow
+
+```text
+Browser
+    │
+    ▼
+Web UI
+    │
+    ▼
+REST API
+    │
+    ▼
+Coordinator Agent
+    │
+    ▼
+Specialized AI Agent
+```
+
+---
+
+# Testing
+
+The application can be verified using:
 
 - Vitest
+- Supertest
 - curl
 - Postman Desktop
 
@@ -269,14 +350,44 @@ Run all automated tests:
 npm test
 ```
 
-## Documentation
+Run linting:
+
+```bash
+npm run lint
+```
+
+Build the project:
+
+```bash
+npm run build
+```
+
+---
+
+# Documentation
 
 - [Project Structure](docs/architecture/project-structure.md)
 - [Architecture Documentation](docs/architecture/README.md)
 - [Setup Documentation](docs/setup/README.md)
 
-## Project Status
+---
+
+# Project Status
 
 🚧 This project is currently under active development.
 
-The initial project foundation has been completed. Future iterations will introduce AI agent implementations, workflow orchestration, Microsoft AI integrations, and automated software engineering capabilities.
+Current capabilities include:
+
+- Coordinator Agent
+- Manual Test Generation Agent
+- Email Agent
+- REST API
+- Browser-based Web UI
+- GitHub Actions CI
+- Jenkins CI Pipeline
+- Microsoft Agent Framework integration
+- Microsoft Semantic Kernel integration
+- Microsoft Graph service foundation
+- Azure AI Foundry service foundation
+
+Future iterations will introduce additional AI agents, workflow orchestration, drag-and-drop automation, Microsoft AI integrations, and automated software engineering capabilities.

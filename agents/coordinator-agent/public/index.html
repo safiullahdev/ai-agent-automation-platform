@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Agent Automation Platform</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main>
+        <h1>AI Agent Automation Platform</h1>
+
+        <section>
+            <label for="agent-select">Select an agent</label>
+
+            <select id="agent-select" name="agent">
+                <option value="">Select an agent</option>
+                <option value="coordinator">Coordinator Agent</option>
+                <option value="manual-test">Manual Test Agent</option>
+                <option value="email">Email Agent</option>
+            </select>
+        </section>
+
+        <section>
+            <label for="prompt-input">Prompt</label>
+
+            <textarea
+                id="prompt-input"
+                name="prompt"
+                rows="8"
+                placeholder="Enter your request"
+            ></textarea>
+        </section>
+
+        <button id="run-agent-button" type="button">
+            Run Agent
+        </button>
+
+        <section>
+            <h2>Response</h2>
+
+            <div id="response-output">
+                The agent response will appear here.
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

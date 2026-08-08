@@ -4,15 +4,15 @@
   "private": true,
   "type": "module",
   "description": "Modular AI agent automation platform built with TypeScript.",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsx src/index.ts",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "lint": "eslint .",
-    "format": "prettier --write ."
-  },
+"scripts": {
+  "build": "tsc",
+  "start": "node dist/src/api/server.js",
+  "dev": "tsx src/api/server.ts",
+  "test": "vitest run",
+  "test:watch": "vitest",
+  "lint": "eslint .",
+  "format": "prettier --write ."
+},
   "engines": {
     "node": ">=20"
   },

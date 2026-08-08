@@ -24,6 +24,7 @@ export class CoordinatorAgent {
     if (
       prompt.includes("test case") ||
       prompt.includes("manual test") ||
+      prompt.includes("user login") ||
       prompt.includes("testing")
     ) {
       return {
