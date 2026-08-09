@@ -4,6 +4,15 @@ const promptInput = document.getElementById("prompt-input");
 const runAgentButton = document.getElementById("run-agent-button");
 const responseOutput = document.getElementById("response-output");
 
+const environmentDisplay = document.getElementById("environment-display");
+
+fetch("/api/environment")
+  .then((response) => response.json())
+  .then((data) => {
+    environmentDisplay.textContent = `Environment: ${data.environment}`;
+  });
+  
+
 runAgentButton.addEventListener("click", async () => {
     const selectedAgent = agentSelect.value;
     const prompt = promptInput.value.trim();

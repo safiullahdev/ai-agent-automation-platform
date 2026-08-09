@@ -35,6 +35,12 @@ app.post("/test", (req, res) => {
   });
 });
 
+app.get("/api/environment", (_req, res) => {
+  res.status(200).json({
+    environment: process.env.APP_ENV || "DEV",
+  });
+});
+
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
