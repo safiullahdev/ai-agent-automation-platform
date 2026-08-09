@@ -3,7 +3,8 @@ import path from "path";
 import agentRoutes from "./routes/agentRoutes.js";
 
 const app = express();
-const PORT = 3000;
+
+const PORT = Number(process.env.PORT) || 3000;
 
 const publicPath = path.join(
   process.cwd(),
@@ -31,6 +32,12 @@ app.get("/health", (_req, res) => {
 app.post("/test", (req, res) => {
   res.json({
     received: req.body,
+  });
+});
+
+app.get("/api/environment", (_req, res) => {
+  res.status(200).json({
+    environment: process.env.APP_ENV || "DEV",
   });
 });
 
