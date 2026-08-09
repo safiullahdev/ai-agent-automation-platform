@@ -38,5 +38,10 @@ pipeline {
                 sh 'docker run -d --name aiap-int -p 3000:3000 ai-agent-automation-platform:int'
             }
         }
+        stage('Verify INT Health') {
+            steps {
+                sh 'curl --fail http://host.docker.internal:3000/health'
+            }
+        }
     }
 }
