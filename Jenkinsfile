@@ -43,5 +43,10 @@ pipeline {
                 sh 'curl --fail http://host.docker.internal:3000/health'
             }
         }
+        stage('Verify INT Web UI') {
+            steps {
+                sh 'curl --fail http://host.docker.internal:3000/'
+            }
+        }
     }
 }
