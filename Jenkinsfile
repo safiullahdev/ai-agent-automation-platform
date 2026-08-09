@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t ai-agent-automation-platform:int .'
+                sh 'docker build -t ai-agent-automation-platform:int .'
         }
 }
     }
