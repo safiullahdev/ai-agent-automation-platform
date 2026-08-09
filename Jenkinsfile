@@ -35,17 +35,17 @@ pipeline {
             steps {
                 sh 'docker stop aiap-int || true'
                 sh 'docker rm aiap-int || true'
-                sh 'docker run -d --name aiap-int -p 3000:3000 ai-agent-automation-platform:int'
+                sh 'docker run -d --name aiap-int -p 3001:3000 ai-agent-automation-platform:int'
             }
         }
         stage('Verify INT Health') {
             steps {
-                sh 'curl --fail http://host.docker.internal:3000/health'
+                sh 'curl --fail http://host.docker.internal:3001/health'
             }
         }
         stage('Verify INT Web UI') {
             steps {
-                sh 'curl --fail http://host.docker.internal:3000/'
+                sh 'curl --fail http://host.docker.internal:3001/'
             }
         }
     }
