@@ -69,15 +69,11 @@ pipeline {
             steps {
                 dir('aiap-playwright-tests') {
                     sh '''
+                        docker build -t aiap-playwright-tests .
                         docker run --rm \
-                        -v "$PWD:/tests" \
-                        -w /tests \
-                        python:3.13-slim \
-                        sh -c "
-                            pip install -r requirements.txt &&
-                            playwright install --with-deps chromium &&
-                            pytest tests/test_smoke.py --base-url http://host.docker.internal:3001
-                        "
+                        aiap-playwright-tests \
+                        pytest tests/test_smoke.py \
+                        --base-url http://host.docker.internal:3001
                     '''
                 }
             }
