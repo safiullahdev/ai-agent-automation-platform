@@ -78,5 +78,10 @@ pipeline {
                 }
             }
         }
+        stage('Promote to TEST') {
+            steps {
+                echo 'Promoting AIAP to TEST environment'
+            }
+        }
     }
 }
