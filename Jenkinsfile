@@ -73,7 +73,7 @@ pipeline {
                         docker run --rm \
                         aiap-playwright-tests \
                         pytest tests/test_smoke.py \
-                        --base-url http://host.docker.internal:3999
+                        --base-url http://host.docker.internal:3001
                     '''
                 }
             }
