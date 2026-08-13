@@ -41,6 +41,7 @@ pipeline {
                 sh 'docker stop aiap-int || true'
                 sh 'docker rm aiap-int || true'
                 sh 'docker run -d --name aiap-int -p 3001:3000 ai-agent-automation-platform:int'
+                sh 'sleep 5'
             }
         }
 
