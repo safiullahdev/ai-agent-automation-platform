@@ -12,6 +12,11 @@ pipeline {
             }
         }
 
+        stage('SCA Dependency Scan') {
+            steps {
+                sh 'npm audit --audit-level=high'
+            }
+        }
         stage('Lint') {
             steps {
                 sh 'npm run lint'
