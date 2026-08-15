@@ -1,0 +1,7 @@
+[extend]
+useDefault = true
+
+[[rules]]
+id = "aiap-test-secret"
+description = "Detect AIAP test secret"
+regex = '''AIAP_SECRET_[A-Z0-9]{16}'''
