@@ -17,6 +17,11 @@ pipeline {
                 sh 'npm audit --audit-level=high'
             }
         }
+        stage('Secret Scan') {
+            steps {
+                sh 'gitleaks dir . --config .gitleaks.toml'
+            }
+        }
         stage('Lint') {
             steps {
                 sh 'npm run lint'
