@@ -45,6 +45,16 @@ pipeline {
                 sh 'docker build -t ai-agent-automation-platform:int .'
             }
         }
+        stage('Docker Image Vulnerability Scan') {
+            steps {
+                sh '''
+                    trivy image \
+                    --severity HIGH,CRITICAL \
+                    --exit-code 1 \
+                    ai-agent-automation-platform:int
+                '''
+            }
+        }
 
         stage('Deploy to INT') {
             steps {

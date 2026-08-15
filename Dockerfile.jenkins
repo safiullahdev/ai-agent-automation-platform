@@ -11,6 +11,10 @@ RUN apt-get update && \
     chmod +x /usr/local/bin/gitleaks && \
     rm /tmp/gitleaks.tar.gz
 
+# Install Trivy
+RUN curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh \
+    | sh -s -- -b /usr/local/bin v0.74.0
+
 # Install Docker CLI
 RUN apt-get update && \
     apt-get install -y ca-certificates curl libatomic1 && \
