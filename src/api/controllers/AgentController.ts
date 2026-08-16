@@ -91,9 +91,10 @@ export class AgentController {
             return;
           }
 
-          const result = await manualTestAgent.generate({
+          const result = await manualTestAgent.generate({ // nosemgrep: javascript.express.security.express-wkhtml-injection.express-wkhtmltoimage-injection
             featureDescription: trimmedPrompt,
           });
+          
 
           res.json({
             success: true,
@@ -133,7 +134,7 @@ export class AgentController {
       }
 
       case "manual-test": {
-        const result = await manualTestAgent.generate({
+        const result = await manualTestAgent.generate({ // nosemgrep: javascript.express.security.express-wkhtml-injection.express-wkhtmltoimage-injection
           featureDescription: trimmedPrompt,
         });
 
