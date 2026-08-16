@@ -22,6 +22,13 @@ pipeline {
                 sh 'gitleaks dir . --config .gitleaks.toml'
             }
         }
+        stage('SAST Scan') {
+            steps {
+                sh '''
+                    semgrep scan --config auto --error .
+                '''
+            }
+        }
         stage('Lint') {
             steps {
                 sh 'npm run lint'

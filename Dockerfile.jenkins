@@ -2,6 +2,14 @@ FROM jenkins/jenkins:lts-jdk21
 
 USER root
 
+# Install Python and Semgrep for SAST scanning
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip python3-venv && \
+    python3 -m venv /opt/semgrep && \
+    /opt/semgrep/bin/pip install --no-cache-dir semgrep
+
+ENV PATH="/opt/semgrep/bin:${PATH}"
+
 # Install Gitleaks
 RUN apt-get update && \
     apt-get install -y curl tar && \
