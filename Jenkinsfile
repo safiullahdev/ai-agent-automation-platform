@@ -4,6 +4,10 @@ pipeline {
     tools {
         nodejs 'NodeJS 26.5.1'
     }
+    environment {
+        SCA_AUDIT_LEVEL = 'high'
+        TRIVY_SEVERITY = 'HIGH,CRITICAL'
+    }
 
     stages {
         stage('Install Dependencies') {
@@ -14,7 +18,7 @@ pipeline {
 
         stage('SCA Dependency Scan') {
             steps {
-                sh 'npm audit --audit-level=high'
+                sh 'npm audit --audit-level=$SCA_AUDIT_LEVEL'
             }
         }
         stage('Secret Scan') {
@@ -56,7 +60,7 @@ pipeline {
             steps {
                 sh '''
                     trivy image \
-                    --severity HIGH,CRITICAL \
+                    --severity $TRIVY_SEVERITY \
                     --exit-code 1 \
                     ai-agent-automation-platform:int
                 '''
